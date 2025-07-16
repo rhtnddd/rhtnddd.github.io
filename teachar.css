@@ -248,7 +248,73 @@ h2{
   left: 24.4%;
   bottom: 25%;
 }
-
+.chbuojumteacher{
+  display: none;
+  position: absolute;
+  z-index: 2;
+  width: 20%;
+  left: 20%;
+  bottom: 25%;
+}
+.imsiwanfront{
+  position: absolute;
+  z-index: 2;
+  width: 25%;
+  left: 20%;
+  bottom: 27%;
+}
+.singimsiwan{
+  display: none;
+  position: absolute;
+  z-index: 2;
+  width: 56%;
+  left: 20%;
+  bottom: 28%;
+}
+.singdumdum{
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 30%;
+  left: 15%;
+  bottom: 27%;
+}
+.handimsiwanher{
+  position: absolute;
+  z-index: 1;
+  width: 25%;
+  left: 30%;
+  bottom: 27%;
+}
+.onehartimsiwan{
+  position: absolute;
+  z-index: 2;
+  width: 20%;
+  left: 25%;
+  bottom: 27%;
+}
+.harther{
+  position: absolute;
+  z-index: 2;
+  width: 20%;
+  left: 40%;
+  bottom: 27%;
+}
+.onegang{
+  position: absolute;
+  z-index: 2;
+  width: 40%;
+  left: 60%;
+  bottom: 27%;
+}
+.ganggu{
+  display: none;
+  position: absolute;
+  z-index: 2;
+  width: 20%;
+  left: 25%;
+  bottom: 0;
+}
 
 
 .text{
@@ -403,7 +469,9 @@ h1.story-text{
   color: #FFFFFF;
 }
 .scene2, .scene3, .scene4, .scene5, .scene6, .scene7, .scene8, .scene9, .scene10, .scene11, .scene12, .scene13, .scene14,.scene15, .scene16,.scene18,
-.scene19,.scene20,.scene21,.scene22,.scene23,.scene24,.scene25,.scene26,.scene27,.scene28,.scene29,.scene30,.scene31,.scene32,.scene33,.scene34 {
+.scene19,.scene20,.scene21,.scene22,.scene23,.scene24,.scene25,.scene26,.scene27,.scene28,.scene29,.scene30,.scene31,.scene32,.scene33,.scene34,
+.scene35,.scene36,.scene37,.scene38,.scene39,.scene40,.scene41,.scene42,.scene43,.scene44,.scene45,.scene46,.scene47,.scene48,.scene49,.scene50,.scene51,
+.scene52,.scene53,.scene54,.scene55,.scene56 {
   display: none;
 }
 

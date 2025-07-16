@@ -1,4 +1,6 @@
 const buttons = document.querySelectorAll(".click");
+let pianochim=window.localStorage.getItem('piano') || 0;
+window.localStorage.setItem('piano', pianochim);
 const sceneElements = {
     1: document.getElementById("scene1"),
     2: document.getElementById("scene2"),
@@ -34,7 +36,28 @@ const sceneElements = {
     32: document.getElementById("scene32"),
     33: document.getElementById("scene33"),
     34: document.getElementById("scene34"),
-    35: document.getElementById("scene35")
+    35: document.getElementById("scene35"),
+    36: document.getElementById("scene36"),
+    37: document.getElementById("scene37"),
+    38: document.getElementById("scene38"),
+    39: document.getElementById("scene39"),
+    40: document.getElementById("scene40"),
+    41: document.getElementById("scene41"),
+    42: document.getElementById("scene42"),
+    43: document.getElementById("scene43"),
+    44: document.getElementById("scene44"),
+    45: document.getElementById("scene45"),
+    46: document.getElementById("scene46"),
+    47: document.getElementById("scene47"),
+    48: document.getElementById("scene48"),
+    49: document.getElementById("scene49"),
+    50: document.getElementById("scene50"),
+    51: document.getElementById("scene51"),
+    52: document.getElementById("scene52"),
+    53: document.getElementById("scene53"),
+    54: document.getElementById("scene54"),
+    55: document.getElementById("scene55"),
+    56: document.getElementById("scene56")
 
 };
 const audioClick = new Audio('決定ボタンを押す17.mp3');
@@ -66,7 +89,7 @@ const sceneData = {
                 speaker: "지혜공주",
                 text: "오늘수업이 끝났네..월남(월요일 남친)이랑 어디로 놀러갈까??",
                 choices: [
-                    { text: "헬스장", nextScene: 32 },
+                    { text: "헬스장", nextScene: 4 },
                     { text: "야구장", nextScene: 7 },
                     { text: "도서관", nextScene: 10 }
                 ]
@@ -531,7 +554,7 @@ const sceneData = {
                 text: "벌써 목요일이네...목남(목요일 남친)이랑 뭐하고 놀지?",
                 choices: [
                     {text: "게임하기", nextScene: 29 },
-                    {text: "요리하기", nextScene: null }
+                    {text: "요리하기", nextScene: 32 }
                 ]
             }
         ]
@@ -681,9 +704,442 @@ const sceneData = {
         type: 'explanation',
         outputId: "explanation_s35",
         texts: [
+            "2025/XX/XX<br>금요일 점심시간...."
+        ],
+        nextScene: 36
+    },
+    scene36: {
+        type: 'story',
+        nameId: "name_s36",
+        outputId: "storyOutput_s36",
+        elements: {
+            threeChoice: "threechoice_s36",
+            text: "text_s36",
+            place1: "place1_s36",
+            place2: "place2_s36",
+            place3: null
+        },
+        stories: [
+            {
+                speaker: "지혜공주",
+                text: "하.....고민이네..",
+                choices: null
+            },
+            {
+                speaker: "최병준쌤",
+                text: "무슨 고민 있나요?~",
+                choices: null
+            },
+            {
+                speaker: "지혜공주",
+                text: "금요일남친이랑 노래방을 갈려고 하는데<br>제가 노래를 잘못불러서..",
+                choices: null
+            },
+            {
+                speaker: "최병준쌤",
+                text: "제가 도움을 도와드려도 될까요?~",
+                choices: [
+                    { text: "네 도와주세요!", nextScene: 37 },
+                    { text: "괜찮을것 같아요.", nextScene: 38 }
+                ]
+            }
+        ]
+    },
+    scene37: {
+        type: 'story',
+        nameId: "name_s37",
+        outputId: "storyOutput_s37",
+        elements: {
+            threeChoice: null,
+            text: "text_s37",
+            place1: null,
+            place2: null,
+            place3: null
+        },
+        stories: [
+            { speaker: "최병준쌤", text: "노래를 부를때는 박자도 중요하지만 음을 잘아는것이 중요한것같아요.<br>그러니 피아노 게임을 통해 음을 정확히 아는것을 해볼까요?", choices: null },
+        ],
+        nextScene: 39
+    },
+    scene38: {
+        type: 'story',
+        nameId: "name_s38",
+        outputId: "storyOutput_s38",
+        elements: {
+            threeChoice: null,
+            text: "text_s38",
+            place1: null,
+            place2: null,
+            place3: null
+        },
+        stories: [
+            { speaker: "최병준쌤", text: "아니요! 제가 꼭 가르쳐드릴게요~", choices: null },
+        ],
+        nextScene: 37
+    },
+    scene40: {
+        type: 'explanation',
+        outputId: "explanation_s40",
+        texts: [
             "2025/XX/XX<br>금요일 방과후...."
         ],
-        nextScene: 14
+        nextScene: 41
+    },
+    scene41: {
+        type: 'story',
+        nameId: "name_s41",
+        outputId: "storyOutput_s41",
+        elements: {
+            threeChoice: "threechoice_s41",
+            text: "text_s41",
+            place1: "place1_s41",
+            place2: "place2_s41",
+            place3: null
+        },
+        stories: [
+            {
+                speaker: "지혜공주",
+                text: "드디어 불금!! 금남(금요일 남친)이랑 어디로 놀러가지?",
+                choices: [
+                    { text: "노래방", nextScene: 42 },
+                    { text: "인생네컷", nextScene: 46 }
+                ]
+            }
+        ]
+    },
+    scene42: {
+        type: 'story',
+        nameId: "name_s42",
+        outputId: "storyOutput_s42",
+        elements: {
+            threeChoice: "threechoice_s42",
+            text: "text_s42",
+            place1: "place1_s42",
+            place2: "place2_s42",
+            place3: "place3_s42"
+        },
+        stories: [
+            {
+                speaker: "금남",
+                text: "여기 노래방, 조용하고 좋아. 사람도 없고.",
+                choices: null
+            },
+            {
+                speaker: "지혜공주",
+                text: "응...너랑 오니까 더 좋은 것 같아.",
+                choices: null
+            },
+            {
+                speaker: "?",
+                text: "(금남은 마이크를 들고 앉아, 차분히 발라드를 부른다. 목소리는 부드럽고 따뜻하다. 여자는 듣다가 무심코 숨을 멈춘다.)",
+                choices: null
+            },
+            {
+                speaker: "지혜공주",
+                text: "매주 듣는데도 또 감동이야.",
+                choices: null
+            },
+            {
+                speaker: "금남",
+                text: "그럼 이번엔 너 차례. 부를 수 있겠어?",
+                choices: null
+            },
+            {
+                speaker: "지혜공주",
+                text: "사실… 오늘은 꼭 부르고 싶은 노래가 있어.",
+                choices: null
+            },
+            {
+                speaker: "?",
+                text: "(심호흡하고 마이크를 든다. 손끝이 떨리지만 눈은 진지하다. 그리고 익숙하지 않은 음정 속에서도 마음을 담아 불러낸다.)<br>(가사는 한 사람을 오래 바라보며 닮아가고 싶었던 이야기.)",
+                choices: null
+            },
+            {
+                speaker: "금남",
+                text: "...지금, 나 조금 반했어.<br>연습했지? …그 마음이, 가사보다 더 와 닿았어.",
+                choices: [
+                    { text: "(조용히 그의 손을 잡는다)", nextScene: 43 },
+                    { text: "좀 많이… 준비했었어. 너한테 잘 보이고 싶어서.", nextScene: 44 },
+                    { text: "(그냥 조용히 미소 짓는다)", nextScene: 45 }
+                ]
+            }
+        ]
+    },
+    scene43: {
+        type: 'story',
+        nameId: "name_s43",
+        outputId: "storyOutput_s43",
+        elements: {
+            threeChoice: null,
+            text: "text_s43",
+            place1: null,
+            place2: null,
+            place3: null
+        },
+        stories: [
+            { speaker: "금남", text: "말 안 해도 알 것 같아. 지금 이 마음.<br><span style=\"color: #FD92C3;\">(금남이의 호감도가 10상승하였습니다.)</span>", choices: null },
+        ],
+        nextScene: 35
+    },
+    scene44: {
+        type: 'story',
+        nameId: "name_s44",
+        outputId: "storyOutput_s44",
+        elements: {
+            threeChoice: null,
+            text: "text_s44",
+            place1: null,
+            place2: null,
+            place3: null
+        },
+        stories: [
+            { speaker: "금남", text: "충분히 멋졌어.<br><span style=\"color: #FD92C3;\">(금남이의 호감도가 20상승하였습니다.)</span>", choices: null },
+        ],
+        nextScene: 35
+    },
+    scene45: {
+        type: 'story',
+        nameId: "name_s45",
+        outputId: "storyOutput_s45",
+        elements: {
+            threeChoice: null,
+            text: "text_s45",
+            place1: null,
+            place2: null,
+            place3: null
+        },
+        stories: [
+            { speaker: "금남", text: "괜찮아. 나, 이미 네 마음 알아.<br><span style=\"color: #FD92C3;\">(금남이의 호감도가 10상승하였습니다.)</span>", choices: null },
+        ],
+        nextScene: 35
+    },
+    scene46: {
+        type: 'story',
+        nameId: "name_s46",
+        outputId: "storyOutput_s46",
+        elements: {
+            threeChoice: "threechoice_s46",
+            text: "text_s46",
+            place1: "place1_s46",
+            place2: "place2_s46",
+            place3: null
+        },
+        stories: [
+            {
+                speaker: "지혜공주",
+                text: "금남아! 우리 인생네컷 찍을래?",
+                choices: null
+            },
+            {
+                speaker: "금남",
+                text: "어…? 갑자기?<br>그래. 네가 원하면, 찍어야지.",
+                choices: null
+            },
+            {
+                speaker: "지혜공주",
+                text: "첫 컷은 웃는 거, 두 번째는 브이~ 세 번째는 뽀짝, 마지막은… 나중에 생각하자!",
+                choices: null
+            },
+            {
+                speaker: "금남",
+                text: "그 마지막이 제일 무서운 거 알지?",
+                choices: null
+            },
+            {
+                speaker: "?",
+                text: "(찰칵. 둘이 어색하게 웃고, 장난도 치고, 손가락 하트도 만든다.)",
+                choices: null
+            },
+            {
+                speaker: "지혜공주",
+                text: "우와~ 너무 잘 나왔다! …근데, 너 표정 왜 이렇게 딱딱해?",
+                choices: null
+            },
+            {
+                speaker: "금남",
+                text: "..그냥, 네 옆에 있으니까. 어디 봐야 할지도 모르겠더라.",
+                choices: [
+                    { text: "(사진을 조용히 접는다)", nextScene: 47 },
+                    { text: "(조용히 미소 지으며 그의 손을 잡는다)", nextScene: 48 }
+                ]
+            }
+        ]
+    },
+    scene47: {
+        type: 'story',
+        nameId: "name_s47",
+        outputId: "storyOutput_s47",
+        elements: {
+            threeChoice: null,
+            text: "text_s47",
+            place1: null,
+            place2: null,
+            place3: null
+        },
+        stories: [
+            { speaker: "지혜공주", text: "..그냥, 나 혼자 신났던 것 같네.<br><span style=\"color: #2b00ffff;\">(금남이의 호감도가 20하락하였습니다.)</span>", choices: null },
+        ],
+        nextScene: 49
+    },
+    scene48: {
+        type: 'story',
+        nameId: "name_s48",
+        outputId: "storyOutput_s48",
+        elements: {
+            threeChoice: null,
+            text: "text_s48",
+            place1: null,
+            place2: null,
+            place3: null
+        },
+        stories: [
+            { speaker: "지혜공주", text: "사진은 엉망이어도.. 오늘은 기억에 남을 것 같아.<br><span style=\"color: #FD92C3;\">(금남이의 호감도가 10상승하였습니다.)</span>", choices: null },
+        ],
+        nextScene: 49
+    },
+    scene49: {
+        type: 'explanation',
+        outputId: "explanation_s49",
+        texts: [
+            "2025/XX/XX<br>토요일 저녁시간...."
+        ],
+        nextScene: 50
+    },
+    scene50: {
+        type: 'story',
+        nameId: "name_s50",
+        outputId: "storyOutput_s50",
+        elements: {
+            threeChoice: "threechoice_s50",
+            text: "text_s50",
+            place1: "place1_s50",
+            place2: "place2_s50",
+            place3: null
+        },
+        stories: [
+            {
+                speaker: "지혜공주",
+                text: "토남(토요일 남친)이나 보러가야지",
+                choices: [
+                    { text: "유치원", nextScene: 51 },
+                    { text: "놀이동산", nextScene: null }
+                ]
+            }
+        ]
+    },
+     scene51: {
+        type: 'story',
+        nameId: "name_s51",
+        outputId: "storyOutput_s51",
+        elements: {
+            threeChoice: "threechoice_s51",
+            text: "text_s51",
+            place1: "place1_s51",
+            place2: "place2_s51",
+            place3: null
+        },
+        stories: [
+            {
+                speaker: "토남",
+                text: "일주일 만이네요. 진짜 오랜만이에요.",
+                choices: null
+            },
+            {
+                speaker: "지혜공주",
+                text: "그러게. 일주일인데 왜 이렇게 오래된 느낌이지?",
+                choices: null
+            },
+            {
+                speaker: "토남",
+                text: "보고 싶었어요. 많이요.",
+                choices: null
+            },
+            {
+                speaker: "지혜공주",
+                text: "나도. 그래서 왔어.",
+                choices: null
+            },
+            {
+                speaker: "짱구",
+                text: "예~~~~쁜 누나!!!<br>오랜만이에요! 누나 어디 갔다 왔어요?",
+                choices: null
+            },
+            {
+                speaker: "지혜공주",
+                text: "음... 좀 바빴어. 왜, 보고 싶었어?",
+                choices: null
+            },
+            {
+                speaker: "짱구",
+                text: "당연하죠! 누나 없어서 유치원 심심했어요!<br>혹시 원장쌤이랑 다시 데이트예요?",
+                choices: [
+                    { text: "응. 우리 사귀잖아.", nextScene: 52 },
+                    { text: "너처럼 귀엽진 않아도 괜찮은 사람이야.", nextScene: 53 }
+                ]
+            }
+        ]
+    },
+    scene52: {
+        type: 'story',
+        nameId: "name_s52",
+        outputId: "storyOutput_s52",
+        elements: {
+            threeChoice: null,
+            text: "text_s52",
+            place1: null,
+            place2: null,
+            place3: null
+        },
+        stories: [
+            { speaker: "지혜공주", text: "응. 우리 사귀잖아. 네가 제일 먼저 알아챈 거네?<br><span style=\"color: #FD92C3;\">(토남이의 호감도가 10상승하였습니다.)</span>", choices: null },
+            { speaker: "짱구", text: "우와! 진짜구나! 그럼 나중에 결혼도 해요?", choices: null },
+            { speaker: "토남", text: "그건 아직 비밀이에요, 짱구 씨.", choices: null },
+            { speaker: "지혜공주", text: "비밀이라더라~ 그러니까 너도 조용히 하고 있어.", choices: null }
+        ],
+        nextScene: 54
+    },
+    scene53: {
+        type: 'story',
+        nameId: "name_s53",
+        outputId: "storyOutput_s53",
+        elements: {
+            threeChoice: null,
+            text: "text_s53",
+            place1: null,
+            place2: null,
+            place3: null
+        },
+        stories: [
+            { speaker: "지혜공주", text: "너처럼 귀엽진 않아도 괜찮은 사람이야. 나한텐.<br><span style=\"color: #FD92C3;\">(토남이의 호감도가 15상승하였습니다.)</span>", choices: null },
+            { speaker: "짱구", text: "엥~ 그럼 누나는 귀여운 사람보다 멋진 사람이 좋은 거예요?", choices: null },
+            { speaker: "토남", text: "어? 갑자기 묘하게 기대되네요.", choices: null },
+            { speaker: "지혜공주", text: "둘 다 아니니까 기대하지 마.", choices: null }
+        ],
+        nextScene: 54
+    },
+    scene54: {
+        type: 'explanation',
+        outputId: "explanation_s54",
+        texts: [
+            "2025/XX/XX<br>일남(일요일 남친)이 지혜공주를 만나러 가는중...."
+        ],
+        nextScene: 55
+    },
+    scene55: {
+        type: 'explanation',
+        outputId: "explanation_s55",
+        texts: [
+            "교통사고를 당해 모든 기억을 잃게되고 지혜공주도 있게되어<br>지혜공주와 일남은 만나지 못하게되었다."
+        ],
+        nextScene: 56
+    },
+    scene56: {
+        type: 'explanation',
+        outputId: "explanation_s55",
+        texts: [
+            "결말이 미흡한 작품을 보고도 플레이 해주셔서 감사합니다."
+        ],
+        nextScene: null
     },
 };
 let scene5current=0;
@@ -698,6 +1154,10 @@ let scene23current=0;
 let scene29current=0;
 let scene31current=0;
 let scene32current=0;
+let scene36current=0;
+let scene42current=0;
+let scene46current=0;
+let scene51current=0;
 let quiztrue=false;
 let currentSceneKey;
 let currentSceneData;
@@ -769,6 +1229,10 @@ function initializeScene(sceneNumber) {
         Object.values(sceneElements).forEach(el => el.style.display = 'none');
         document.getElementById("scene17").style.display = "block";
         startQuizGame();
+        return;
+    }
+    else if (sceneNumber === 39) {
+        document.location = '/html.html';
         return;
     }
     Object.values(sceneElements).forEach(el => el.style.display = 'none');
@@ -1052,6 +1516,128 @@ function handleStoryComplete() {
                 }
             }
         }
+        else if (currentSceneKey === "scene36") {
+            if (scene36current === 0) {
+                const chbuojumteacher = document.getElementById("chbuojumteacher");
+                if (chbuojumteacher) {
+                    chbuojumteacher.style.display = "block";
+                }
+            }
+            if (scene36current === 3) {
+                const chbuojumteacher = document.getElementById("chbuojumteacher");
+                if (chbuojumteacher) {
+                    chbuojumteacher.style.display = "none";
+                }
+            }
+        }
+        else if (currentSceneKey === "scene51") {
+            if (scene51current === 3) {
+                const ganggu = document.getElementById("ganggu");
+                if (ganggu) {
+                    ganggu.style.display = "block";
+                }
+            }
+        }
+        else if (currentSceneKey === "scene42") {
+            if (scene42current === 1) {
+                const imsiwanfront = document.getElementById("imsiwanfront");
+                const singimsiwan = document.getElementById("singimsiwan");
+                const dumdum_1 = document.getElementById("dumdum_1");
+                if (imsiwanfront&&singimsiwan&&dumdum_1) {
+                    singimsiwan.style.display = "block";
+                    imsiwanfront.style.display = "none";
+                    dumdum_1.style.display = "none";
+                }
+            }
+            if (scene42current === 2) {
+                const imsiwanfront = document.getElementById("imsiwanfront");
+                const singimsiwan = document.getElementById("singimsiwan");
+                const dumdum_1 = document.getElementById("dumdum_1");
+                if (imsiwanfront&&singimsiwan&&dumdum_1) {
+                    imsiwanfront.style.display = "block";
+                    singimsiwan.style.display = "none";
+                    dumdum_1.style.display = "block";
+                }
+            }
+            if (scene42current === 5) {
+                const singdumdum = document.getElementById("singdumdum");
+                const dumdum_1 = document.getElementById("dumdum_1");
+                if (singdumdum&&dumdum_1) {
+                    singdumdum.style.display = "block";
+                    dumdum_1.style.display = "none";
+                }
+            }
+            if (scene42current === 6) {
+                const imsiwanfront = document.getElementById("imsiwanfront");
+                const amazingimiswan = document.getElementById("amazingimsiwan");
+                if (imsiwanfront&&amazingimiswan) {
+                    amazingimiswan.style.display = "block";
+                    imsiwanfront.style.display = "none";
+                }
+            }
+            if (scene42current === 7) {
+                const singdumdum = document.getElementById("singdumdum");
+                const amazingimiswan = document.getElementById("amazingimsiwan");
+                const chilly_5 = document.getElementById("chilly_5");
+                if (singdumdum&&amazingimiswan&&chilly_5) {
+                    chilly_5.style.display = "block";
+                    amazingimiswan.style.display = "none";
+                    singdumdum.style.display = "none";
+                }
+            }
+        }
+        else if (currentSceneKey === "scene46") {
+            if (scene46current === 1) {
+                const nice_2 = document.getElementById("nice_2");
+                const amazingimsiwan_1 = document.getElementById("amazingimsiwan_1");
+                const happyside_3 = document.getElementById("happyside_3");
+                const hiimsiwan = document.getElementById("hiimsiwan");
+                const necutsazin = document.getElementById("necutsazin");
+                const necutsazinan = document.getElementById("necutsazinan");
+                if (nice_2&&amazingimsiwan_1&&happyside_3&&hiimsiwan&&necutsazin&&necutsazinan) {
+                    hiimsiwan.style.display = "block";
+                    happyside_3.style.display = "block";
+                    necutsazinan.style.display = "block";
+                    amazingimsiwan_1.style.display = "none";
+                    necutsazin.style.display = "none";
+                    nice_2.style.display = "none";
+                }
+            }
+            if (scene46current === 3) {
+                const happyside_3 = document.getElementById("happyside_3");
+                const hiimsiwan = document.getElementById("hiimsiwan");
+                const harther = document.getElementById("harther");
+                const vimsiwan = document.getElementById("vimsiwan");
+                if (vimsiwan&&harther&&happyside_3&&hiimsiwan) {
+                    vimsiwan.style.display = "block";
+                    happyside_3.style.display = "none";
+                    hiimsiwan.style.display = "none";
+                    harther.style.display = "block";
+                }
+            }
+            if (scene46current === 4) {
+                const imsiwanfront_1 = document.getElementById("imsiwanfront_1");
+                const happyside_3 = document.getElementById("happyside_3");
+                const harther = document.getElementById("harther");
+                const vimsiwan = document.getElementById("vimsiwan");
+                if (harther&&happyside_3&&imsiwanfront_1&&vimsiwan) {
+                    happyside_3.style.display = "block";
+                    vimsiwan.style.display = "none";
+                    harther.style.display = "none";
+                    imsiwanfront_1.style.display = "block";
+                }
+            }
+            if (scene46current === 6) {
+                const imsiwanfront_1 = document.getElementById("imsiwanfront_1");
+                const happyside_3 = document.getElementById("happyside_3");
+                const donthappyside_1 = document.getElementById("donthappyside_1")
+                if (happyside_3&&imsiwanfront_1&&donthappyside_1) {
+                    happyside_3.style.display = "none";
+                    donthappyside_1.style.display = "block";
+                    imsiwanfront_1.style.display = "none";
+                }
+            }
+        }
         if (currentSceneKey === "scene5"){
             scene5current++;
         }
@@ -1087,6 +1673,18 @@ function handleStoryComplete() {
         }
         if (currentSceneKey === "scene32"){
             scene32current++;
+        }
+        if (currentSceneKey === "scene36"){
+            scene36current++;
+        }
+        if (currentSceneKey === "scene42"){
+            scene42current++;
+        }
+        if (currentSceneKey === "scene46"){
+            scene46current++;
+        }
+        if (currentSceneKey === "scene51"){
+            scene51current++;
         }
     }, 1500);
 setTimeout(() => {
@@ -1191,16 +1789,16 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeScene(1);
 }); 
 const characters = [
-    { name: "가렌", img: "images/garen.png" },
-    { name: "리 신", img: "images/leesin.png" },
-    { name: "애쉬", img: "images/ashe.png" },
-    { name: "티모", img: "images/teemo.png" },
-    { name: "럭스", img: "images/lux.png" },
-    { name: "아리", img: "images/ahri.png" },
-    { name: "야스오", img: "images/yasuo.png" },
-    { name: "제드", img: "images/zed.png" },
-    { name: "잭스", img: "images/jax.png" },
-    { name: "이즈리얼", img: "images/ezreal.png" },
+    { name: "가렌", img: "garen.png" },
+    { name: "리 신", img: "leesin.png" },
+    { name: "애쉬", img: "ashe.png" },
+    { name: "티모", img: "teemo.png" },
+    { name: "럭스", img: "lux.png" },
+    { name: "아리", img: "ahri.png" },
+    { name: "야스오", img: "yasuo.png" },
+    { name: "제드", img: "zed.png" },
+    { name: "잭스", img: "jax.png" },
+    { name: "이즈리얼", img: "ezreal.png" },
 ];
 
 let quizSet = [];
@@ -1256,3 +1854,5 @@ function finishQuiz() {
         }, 2000);
     }
 }
+
+addEventListener("DOMContentLoaded", (event) => { if(pianochim==1) initializeScene(40); window.localStorage.setItem('piano', 0); })

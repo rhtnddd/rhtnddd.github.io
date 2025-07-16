@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음 훈련</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            z-index: 1;
+        }
+
+        .controls {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            z-index: 1;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button#start-button {
+            background-color: #28a745;
+            color: white;
+        }
+
+        button#start-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        button#play-note-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        button#play-note-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            min-height: 30px;
+            color: #555;
+            z-index: 1;
+        }
+
+        .score {
+            margin-top: 15px;
+            font-size: 1.1em;
+            color: #666;
+            z-index: 1;
+        }
+
+        .piano {
+            display: flex;
+            margin-top: 40px;
+            padding: 10px;
+            background-color: #eee;
+            border-radius: 10px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+            overflow-x: auto;
+            max-width: 95%;
+            z-index: 1;
+        }
+
+        .white-key, .black-key {
+            border: 1px solid #ccc;
+            cursor: pointer;
+            position: relative;
+            box-sizing: border-box;
+            user-select: none;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 10px;
+            font-size: 0.9em;
+            transition: background-color 0.1s ease;
+        }
+
+        .white-key {
+            width: 60px;
+            height: 250px;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+            margin-right: 2px;
+            border-bottom: 5px solid #bbb;
+        }
+
+        .white-key:active, .white-key.active {
+            background-color: #e0e0e0;
+            border-bottom: 2px solid #aaa;
+        }
+
+        .black-key {
+            width: 40px;
+            height: 150px;
+            background-color: #333;
+            border-radius: 0 0 3px 3px;
+            margin-left: -20px;
+            margin-right: -20px;
+            z-index: 1;
+            border-bottom: 3px solid #111;
+        }
+
+        .black-key:active, .black-key.active {
+            background-color: #1a1a1a;
+            border-bottom: 1px solid #000;
+        }
+
+        .key-label {
+            position: absolute;
+            bottom: 10px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .black-key .key-label {
+            color: #eee;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5em;
+            font-weight: bold;
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            pointer-events: auto;
+            opacity: 1;
+        }
+
+        .overlay.fail {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: red;
+        }
+
+        .overlay.success {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: limegreen;
+        }
+
+        .overlay-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .overlay-button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .overlay-button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .white-key {
+                width: 45px;
+                height: 200px;
+            }
+            .black-key {
+                width: 30px;
+                height: 120px;
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            .overlay {
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎵 음 훈련</h1>
+
+    <div class="controls">
+        <button id="start-button">훈련 시작</button>
+        <button id="play-note-button" style="display: none;">음 다시 듣기</button>
+    </div>
+
+    <div class="message" id="message">훈련을 시작해주세요!</div>
+    <div class="score">
+        문제: <span id="current-question">0</span> / <span id="total-questions">5</span> |
+        정답: <span id="correct-count">0</span> / 오답: <span id="incorrect-count">0</span>
+    </div>
+
+    <div class="piano" id="piano">
+        </div>
+
+    <div class="overlay fail" id="failOverlay">
+        <div class="overlay-content">
+            fail
+            <button class="overlay-button" id="failRestartButton">다시 시작</button>
+        </div>
+    </div>
+
+    <div class="overlay success" id="successOverlay">
+        <div class="overlay-content">
+            success
+            <button class="overlay-button" id="successRestartButton">다시 시작</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/web-audio-daw"></script>
+    <script>
+        const startButton = document.getElementById('start-button');
+        const playNoteButton = document.getElementById('play-note-button');
+        const messageDisplay = document.getElementById('message');
+        const currentQuestionSpan = document.getElementById('current-question');
+        const totalQuestionsSpan = document.getElementById('total-questions');
+        const correctCountSpan = document.getElementById('correct-count');
+        const incorrectCountSpan = document.getElementById('incorrect-count');
+        const pianoContainer = document.getElementById('piano');
+        const failOverlay = document.getElementById('failOverlay');
+        const successOverlay = document.getElementById('successOverlay');
+        const failRestartButton = document.getElementById('failRestartButton');
+        const successRestartButton = document.getElementById('successRestartButton');
+
+        let audioContext;
+        let oscillator;
+        let gainNode;
+        let currentNoteMidi;
+        let isTrainingActive = false;
+        let correctCount = 0;
+        let incorrectCount = 0;
+        let questionNumber = 0;
+
+        const TOTAL_QUESTIONS_PER_ROUND = 5;
+        const MAX_INCORRECT_ALLOWED = 2;
+
+        const noteFrequencies = {};
+        const noteNames = [
+            'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'
+        ];
+        const minMidi = 60;
+        const maxMidi = 71;
+
+        function setupNotes() {
+            for (let i = minMidi; i <= maxMidi; i++) {
+                noteFrequencies[i] = 440 * Math.pow(2, (i - 69) / 12);
+            }
+        }
+
+        function createPianoKeys() {
+            pianoContainer.innerHTML = '';
+            for (let midi = minMidi; midi <= maxMidi; midi++) {
+                const noteNameIndex = (midi % 12);
+                const noteName = noteNames[noteNameIndex];
+                const isBlackKey = noteName.includes('#');
+
+                const key = document.createElement('div');
+                key.dataset.midi = midi;
+                key.dataset.note = noteName + Math.floor(midi / 12 - 1);
+                key.classList.add(isBlackKey ? 'black-key' : 'white-key');
+
+                const label = document.createElement('span');
+                label.classList.add('key-label');
+                label.textContent = noteName;
+                key.appendChild(label);
+
+                key.addEventListener('mousedown', (e) => {
+                    playKeySound(midi);
+                    key.classList.add('active');
+                    if (isTrainingActive) {
+                        checkAnswer(midi);
+                    }
+                });
+                key.addEventListener('mouseup', () => {
+                    stopKeySound();
+                    key.classList.remove('active');
+                });
+                key.addEventListener('mouseleave', () => {
+                    key.classList.remove('active');
+                });
+
+                pianoContainer.appendChild(key);
+            }
+        }
+
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                gainNode = audioContext.createGain();
+                gainNode.gain.value = 0.5;
+                gainNode.connect(audioContext.destination);
+            }
+        }
+
+        function playNote(midiNote) {
+            initAudio();
+            if (oscillator) {
+                oscillator.stop();
+                oscillator.disconnect();
+            }
+            oscillator = audioContext.createOscillator();
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(noteFrequencies[midiNote], audioContext.currentTime);
+            oscillator.connect(gainNode);
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.8);
+        }
+
+        function playKeySound(midiNote) {
+            initAudio();
+            const keyOscillator = audioContext.createOscillator();
+            keyOscillator.type = 'sine';
+            keyOscillator.frequency.setValueAtTime(noteFrequencies[midiNote], audioContext.currentTime);
+            const keyGainNode = audioContext.createGain();
+            keyGainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            keyOscillator.connect(keyGainNode);
+            keyGainNode.connect(audioContext.destination);
+            keyOscillator.start();
+            keyOscillator.stop(audioContext.currentTime + 0.3);
+        }
+
+        function stopKeySound() {
+        }
+
+        function playRandomNote() {
+            if (questionNumber >= TOTAL_QUESTIONS_PER_ROUND) {
+                isTrainingActive = false;
+                if (incorrectCount > MAX_INCORRECT_ALLOWED) {
+                    showOverlay(failOverlay);
+                } else {
+                    showOverlay(successOverlay);
+                }
+                return;
+            }
+
+            questionNumber++;
+            updateScore();
+            const availableMidiNotes = Object.keys(noteFrequencies).map(Number);
+            const randomIndex = Math.floor(Math.random() * availableMidiNotes.length);
+            currentNoteMidi = availableMidiNotes[randomIndex];
+            playNote(currentNoteMidi);
+            messageDisplay.textContent = `${questionNumber}번째 문제: 방금 들린 음은 무엇일까요?`;
+        }
+
+        function checkAnswer(selectedMidi) {
+            if (!isTrainingActive) return;
+
+            if (selectedMidi === currentNoteMidi) {
+                messageDisplay.textContent = '🎉 정답입니다! 🎉';
+                messageDisplay.style.color = '#28a745';
+                correctCount++;
+            } else {
+                const correctNoteName = noteNames[currentNoteMidi % 12] + Math.floor(currentNoteMidi / 12 - 1);
+                const selectedNoteName = noteNames[selectedMidi % 12] + Math.floor(selectedMidi / 12 - 1);
+                messageDisplay.textContent = `아쉽네요. ${selectedNoteName}을(를) 누르셨습니다. 정답은 ${correctNoteName}이(었습니다).`;
+                messageDisplay.style.color = '#dc3545';
+                incorrectCount++;
+            }
+            updateScore();
+
+            setTimeout(() => {
+                if (isTrainingActive) {
+                    playRandomNote();
+                    messageDisplay.style.color = '#555';
+                }
+            }, 2000);
+        }
+
+        function updateScore() {
+            currentQuestionSpan.textContent = questionNumber;
+            totalQuestionsSpan.textContent = TOTAL_QUESTIONS_PER_ROUND;
+            correctCountSpan.textContent = correctCount;
+            incorrectCountSpan.textContent = incorrectCount;
+        }
+
+        function showOverlay(overlayElement) {
+            overlayElement.classList.add('active');
+            document.querySelector('h1').style.display = 'none';
+            document.querySelector('.controls').style.display = 'none';
+            document.querySelector('.message').style.display = 'none';
+            document.querySelector('.score').style.display = 'none';
+            document.querySelector('.piano').style.display = 'none';
+            let pianochim=window.localStorage.getItem('piano');
+            window.localStorage.setItem('piano', pianochim+1);
+            if(overlayElement == successOverlay) document.location = 'index.html';
+        }
+
+        function hideOverlayAndReset() {
+            failOverlay.classList.remove('active');
+            successOverlay.classList.remove('active');
+            document.querySelector('h1').style.display = 'block';
+            document.querySelector('.controls').style.display = 'flex';
+            document.querySelector('.message').style.display = 'block';
+            document.querySelector('.score').style.display = 'block';
+            document.querySelector('.piano').style.display = 'flex';
+            resetGame();
+        }
+
+        function resetGame() {
+            isTrainingActive = false;
+            correctCount = 0;
+            incorrectCount = 0;
+            questionNumber = 0;
+            updateScore();
+            startButton.textContent = '훈련 시작';
+            startButton.style.backgroundColor = '#28a745';
+            startButton.style.color = 'white';
+            playNoteButton.style.display = 'none';
+            messageDisplay.textContent = '훈련을 시작하려면 "훈련 시작" 버튼을 눌러주세요.';
+            messageDisplay.style.color = '#555';
+            if (oscillator) {
+                oscillator.stop();
+                oscillator.disconnect();
+            }
+        }
+
+        startButton.addEventListener('click', () => {
+            if (!isTrainingActive) {
+                initAudio();
+                isTrainingActive = true;
+                correctCount = 0;
+                incorrectCount = 0;
+                questionNumber = 0;
+                updateScore();
+                startButton.textContent = '훈련 재시작';
+                startButton.style.backgroundColor = '#ffc107';
+                startButton.style.color = '#333';
+                playNoteButton.style.display = 'inline-block';
+                messageDisplay.textContent = '훈련이 시작되었습니다!';
+                messageDisplay.style.color = '#555';
+                setTimeout(playRandomNote, 1000);
+            } else {
+                if (confirm('훈련을 재시작하시겠습니까? 현재 진행 상황이 초기화됩니다.')) {
+                    hideOverlayAndReset();
+                }
+            }
+        });
+
+        playNoteButton.addEventListener('click', () => {
+            if (isTrainingActive && currentNoteMidi !== undefined) {
+                playNote(currentNoteMidi);
+            }
+        });
+
+        failRestartButton.addEventListener('click', hideOverlayAndReset);
+        successRestartButton.addEventListener('click', hideOverlayAndReset);
+
+        setupNotes();
+        createPianoKeys();
+        resetGame();
+    </script>
+</body>
+</html>
