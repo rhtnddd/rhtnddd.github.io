@@ -879,7 +879,7 @@ const sceneData = {
         stories: [
             { speaker: "금남", text: "말 안 해도 알 것 같아. 지금 이 마음.<br><span style=\"color: #FD92C3;\">(금남이의 호감도가 10상승하였습니다.)</span>", choices: null },
         ],
-        nextScene: 35
+        nextScene: 49
     },
     scene44: {
         type: 'story',
@@ -895,7 +895,7 @@ const sceneData = {
         stories: [
             { speaker: "금남", text: "충분히 멋졌어.<br><span style=\"color: #FD92C3;\">(금남이의 호감도가 20상승하였습니다.)</span>", choices: null },
         ],
-        nextScene: 35
+        nextScene: 49
     },
     scene45: {
         type: 'story',
@@ -911,7 +911,7 @@ const sceneData = {
         stories: [
             { speaker: "금남", text: "괜찮아. 나, 이미 네 마음 알아.<br><span style=\"color: #FD92C3;\">(금남이의 호감도가 10상승하였습니다.)</span>", choices: null },
         ],
-        nextScene: 35
+        nextScene: 49
     },
     scene46: {
         type: 'story',
